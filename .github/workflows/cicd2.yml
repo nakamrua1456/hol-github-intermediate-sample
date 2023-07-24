@@ -21,6 +21,8 @@ jobs:
       run: dotnet build --restore # この行にBuildステップに対応する形でdotnetのリストアコマンドを記入してください
     - name: Build
       run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
     - name: Publish
       run: dotnet publish ./src/SampleApplication.csproj -c Release -o ${{env.DOTNET_ROOT}}/webapp
     - name: Upload artifact
@@ -28,7 +30,3 @@ jobs:
       with:
         name: dotnet-webapp
         path: ${{env.DOTNET_ROOT}}/webapp
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
