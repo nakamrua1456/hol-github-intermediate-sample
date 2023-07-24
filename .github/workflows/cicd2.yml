@@ -28,3 +28,7 @@ jobs:
       with:
         name: dotnet-webapp
         path: ${{env.DOTNET_ROOT}}/webapp
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
